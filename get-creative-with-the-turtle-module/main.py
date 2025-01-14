@@ -27,14 +27,38 @@ turtle.pendown()
 
 def star():
   # Star
+  turtle.pencolor("purple")
+  for i in range(5):
+    turtle.forward(110)
+    turtle.left(216)
 
 def square():
   # Square
+  turtle.pencolor("blue")
+
+  for i in range(4):
+    turtle.forward(100)
+    turtle.right(90)
 
 def hexagon():
   # Hexagon
+  turtle.pencolor("green")
 
-selection = input("1. Star\n2. Square\n3. Hexagon\nSelect a number: ")
+  for i in range(6):
+    turtle.forward(100)
+    turtle.right(60)
+
+def rectangle():
+  #Rectangle
+  turtle.pencolor("red")
+
+  for i in range(2):
+    turtle.forward(200)
+    turtle.right(90)
+    turtle.forward(50)
+    turtle.right(90)
+
+selection = input("1. Star\n2. Square\n3. Hexagon\n4. Rectangle\nSelect a number: ")
 if selection == "1":
   print("Excellent choice! Go to the result tab to see your creation.")
   star()
@@ -44,3 +68,6 @@ elif selection == "2":
 elif selection == "3":
   print("Excellent choice! Go to the result tab to see your creation.")
   hexagon()
+elif selection == "4":
+  print("Excellent choice! Go to the result tab to see your creation.")
+  rectangle()
