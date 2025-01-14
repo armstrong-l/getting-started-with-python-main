@@ -1,5 +1,7 @@
 import turtle as turtle
 
+
+# HEXAGON
 # turtle.pencolor("blue")
 # turtle.forward(100)
 # turtle.right(60)
@@ -24,7 +26,7 @@ import turtle as turtle
 # turtle.forward(100)
 # turtle.right(60)
 
-
+# SQUARE
 # turtle.pencolor("blue")
 # turtle.forward(100)
 # turtle.right(90)
@@ -35,6 +37,8 @@ import turtle as turtle
 # turtle.forward(100)
 # turtle.right(90)
 
+
+# STAR
 turtle.pencolor("purple")
 
 turtle.forward(110)
