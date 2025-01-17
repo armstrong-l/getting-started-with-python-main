@@ -1,5 +1,12 @@
 import csv
 
+def intro():
+  print('\nWelcome to the Spanish and French translator app.\n\nPlease enter an English word and press the "Enter" key.')
+  print('\nType "done" at any time to exit.')
+
+def exit():
+  print('\nThankyou for using the translator app. Have a great day!')
+
 translations = {}
 
 with open("translations.csv", "r") as words:
@@ -10,20 +17,20 @@ with open("translations.csv", "r") as words:
     french = line["French"].lower()
     translations[english] = [spanish, french]
 
-
-
 done = False
 
-print('Type "done" at any time to exit.')
+intro()
 
 while not done:
-  word = input("Type an English word to translate: ")
+  word = input("\nType an English word to translate: ")
   word = word.lower()
 
   if word == "done":
     done = True
+    exit()
   elif word in translations:
-    print(translations[word])
+    print(f'\nSPANISH: {translations[word][0]}')
+    print(f'\nFRENCH: {translations[word][1]}')
   else:
-    print("Translation is not known")
+    print("\nTranslation is not known")
 
