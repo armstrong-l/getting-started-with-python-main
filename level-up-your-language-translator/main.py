@@ -1,8 +1,16 @@
-translations = {
-  "hello":"hola",
-  "thank you":"gracias",
-  "sorry":"lo siento"
-}
+import csv
+
+translations = {}
+
+with open("translations.csv", "r") as words:
+  reader = csv.DictReader(words, delimiter=",")
+  for line in reader:
+    english = line["English"].lower()
+    spanish = line["Spanish"].lower()
+    french = line["French"].lower()
+    translations[english] = [spanish, french]
+
+
 
 done = False
 
