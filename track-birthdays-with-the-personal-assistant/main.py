@@ -2,11 +2,13 @@
 import json
 from PersonalAssistant import PersonalAssistant
 
-#ADD CODE: open JSON file and pass data to PersonalAssistant class
-with open("todo.json", "r") as todos:
-  todo_list = json.load(todos)
 
-  assistant = PersonalAssistant(todo_list)
+#ADD CODE: open JSON file and pass data to PersonalAssistant class
+with open("todo.json", "r") as todos, open("birthdays.json", "r") as birthdays:
+  todo_list = json.load(todos)
+  birthday_list = json.load(birthdays)
+
+  assistant = PersonalAssistant(todo_list, birthday_list)
 
 done = False
 
@@ -19,6 +21,11 @@ How can I help you?
     1: Add a to-do
     2: Remove a to-do
     3: Get to-do list
+
+    **** Birthdays ****
+    4: Get birthday
+    5: Add birthday
+    6: Remove birthday
 
     Select a number or type 'Exit' to quit: 
     
@@ -37,6 +44,23 @@ How can I help you?
     elif user_command == "3":
         print("\nYour to-do list")
         print(f"\n {assistant.get_todos()}")
+    elif user_command == "4":
+        print("\nYour list of birthday contacts: ")
+        for name in assistant.get_birthdays():
+            print(name)
+        user_input = input("Please enter the name of the person: ")
+        print(f"\n{assistant.get_birthday(user_input)}")
+    elif user_command == "5":
+        name = input("Name of the person: ")
+        birthday = input("Their birthday (eg. 08/18/2000): ")
+        print(f"\n{assistant.add_birthday(name, birthday)}")
+    elif user_command == "6":
+        print("\nYour list of birthday contacts: ")
+        for name in assistant.get_birthdays():
+            print(name)
+        user_input = input("Please enter the name of the person you want to remove: ")
+        print(f"\n{assistant.remove_birthday(user_input)}")
+
     elif user_command == "exit" or user_command == "Exit" or user_command == "EXIT":
         done = True
         print("\nGoodbye, see you soon!")
@@ -44,5 +68,6 @@ How can I help you?
         print("\nNot a valid command.")
 
 # ADD CODE: write data to JSON file
-with open("todo.json", "w") as write_todos:
+with open("todo.json", "w") as write_todos, open("birthdays.json", "w") as write_birthdays:
     json.dump(assistant.get_todos(), write_todos)
+    json.dump(assistant.get_birthdays(), write_birthdays)
